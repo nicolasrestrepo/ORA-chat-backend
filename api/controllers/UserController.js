@@ -18,6 +18,7 @@ module.exports = {
             content: req.param('message')
         }).then(function(createdMessage) {
             //notify
+            sails.sockets.broadcast("newMessage", createdMessage);
             return ok('ok');
         }).catch(function(err) {
             return res.negotiate(err);
