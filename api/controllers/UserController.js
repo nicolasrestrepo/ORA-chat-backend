@@ -24,14 +24,14 @@ module.exports = {
     },
     new: function(req, res) {
         User.find().then(function(allUsers) {
-            var userName = allUsers.length + 1;
+            var userName = "User " + (allUsers.length + 1);
             User.create({ name: userName }).then(function(userCreated) {
                 User.update({
                     id: userCreated.id
                 }, {
                     token: jwt.encode(userCreated, secret)
                 }).then(function(userUpdatedWithToken) {
-                    return res.ok(created);
+                    return res.ok(userUpdatedWithToken);
                 })
             })
         }).catch(function(err) {

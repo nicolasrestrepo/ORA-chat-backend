@@ -23,6 +23,6 @@
 module.exports.routes = {
     'GET /': 'MessageController.list',
     'POST /send': 'UserController.send',
-    'GET /create': 'UserController.new'
+    'POST /create': 'UserController.new'
 
 };
