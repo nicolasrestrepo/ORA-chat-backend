@@ -10,7 +10,7 @@ module.exports = {
         if (!req.isSocket)
             return res.badRequest('Care verga, haga las peticiones bien');
 
-        Message.find().populate('user').then(function(messages) {
+        Message.find().sort('createdAt ASC').populate('user').then(function(messages) {
             return res.ok(messages);
         }).catch(function(err) {
             return res.negotiate(err);
